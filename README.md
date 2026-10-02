@@ -59,8 +59,10 @@ cd ..
 
 ```bash
 cd python_backend
-setup.bat
+.\setup.bat
 ```
+
+(Works in both PowerShell and Command Prompt. When it says "Setup complete", press any key to close it.)
 
 This creates `python_backend\venv` and installs CPU-only PyTorch plus everything in
 `requirements.txt`.
@@ -90,9 +92,13 @@ From the project root:
 npm start
 ```
 
-On first launch Jade downloads its language model (Gemma 2 2B, about 1.6 GB) through
-Ollama. Startup takes a minute or two while the Python backend loads; later launches
-are faster.
+On first launch:
+
+- Jade asks **where to save your source files** (the documents you add). Pick any folder,
+  or cancel to keep them inside Jade's data folder.
+- It downloads its language model (Gemma 2 2B, about 1.6 GB) through Ollama.
+- Startup takes a minute or two while the Python backend loads, and the **first answer**
+  can take up to a minute while the model loads into memory. Later answers take seconds.
 
 ## Build a standalone app
 
