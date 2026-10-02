@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+jspm_packages/
+python_backend/venv/
+__pycache__/
+*.pyc
+
+# Compiled outputs
+dist/
+build/
+dist_electron/
+dist_electron_portable/
+dist_installer/
+/backend/dist/
+/backend/models/
+/frontend/dist/
+*.exe
+
+# Bundled runtimes and models (multi-GB; downloaded or copied at build time)
+/ollama/
+/ollama_models_dist/
+/models/
+python_backend/models_cache/
+
+# Local persistent data (SQLite database, watch folder, Ollama models cache)
+/data/
+*.db
+*.db-wal
+*.db-shm
+
+# Legacy Node backend (replaced by python_backend/) and local scratch work
+/backend/
+/scratch/
+
+# Environment configurations
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+logs/
+build_log.txt
+
+# Editor / tool settings
+.claude/
+.vscode/
+.idea/
+
+# System metadata files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Internal docs and the old Docker-based setup (kept locally, not published)
+/agent_docs/
+/Jade_Technical_Documentation.pdf
+/docker-compose.yml
+/Ollama.Dockerfile
+/start_brain.bat
+/start_brain.sh
+/test_path.bat

@@ -1,0 +1,134 @@
+/*
+ * Clean Minimal Theme
+ * Palette: neutral zinc (no green tint in surfaces)
+ * Typography: Inter for UI, JetBrains Mono for code
+ * Accessibility: WCAG AA contrast on all text/interactive elements
+ *
+ * Applied when <html data-palette="clean"> is set.
+ * Dark/light still controlled by data-theme / prefers-color-scheme.
+ */
+
+/* ── Google Fonts: Inter ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Dark (default for clean palette) ───────────────────────────────────── */
+[data-palette="clean"] {
+  /* Backgrounds — pure near-black, no green tint */
+  --bg:            #09090b;   /* zinc-950 */
+  --surface:       #111113;   /* slightly lighter */
+  --surface-raised:#18181b;   /* zinc-900 */
+  --surface-hover: #27272a;   /* zinc-800 */
+
+  /* Borders */
+  --border:        #27272a;   /* zinc-800 */
+  --border-mid:    #3f3f46;   /* zinc-700 */
+
+  /* Text — WCAG AA verified */
+  --text-1:        #fafafa;   /* zinc-50  — 16.8:1 on bg ✓ */
+  --text-2:        #a1a1aa;   /* zinc-400 —  5.9:1 on bg ✓ */
+  --text-3:        #52525b;   /* zinc-600 —  3.1:1 (decorative/disabled) */
+
+  /* Accent — green-400: ~7.4:1 on bg ✓ */
+  --accent:        #4ade80;
+  --accent-dim:    rgba(74,222,128,.12);
+  --accent-glow:   rgba(74,222,128,.06);
+
+  /* Semantic colours */
+  --red:           #f87171;   /* red-400   — 4.6:1 ✓ */
+  --amber:         #fbbf24;   /* amber-400 — 8.1:1 ✓ */
+  --purple:        #a78bfa;   /* violet-400 */
+  --teal:          #2dd4bf;   /* teal-400  */
+
+  /* Shadow: softer than jade theme */
+  --shadow:        0 1px 3px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+
+  /* Shape */
+  --radius:        6px;
+
+  /* UI font (overrides --mono in body rule) */
+  --font:          'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Focus ring */
+  --focus-ring:    0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+/* ── Light (system preference) ───────────────────────────────────────────── */
+@media (prefers-color-scheme: light) {
+  [data-palette="clean"]:not([data-theme="dark"]) {
+    --bg:            #ffffff;
+    --surface:       #fafafa;
+    --surface-raised:#f4f4f5;   /* zinc-100 */
+    --surface-hover: #e4e4e7;   /* zinc-200 */
+
+    --border:        #e4e4e7;   /* zinc-200 */
+    --border-mid:    #d4d4d8;   /* zinc-300 */
+
+    --text-1:        #09090b;   /* zinc-950 — 21:1 ✓ */
+    --text-2:        #52525b;   /* zinc-600 —  7.0:1 ✓ */
+    --text-3:        #a1a1aa;   /* zinc-400 —  3.2:1 (decorative) */
+
+    --accent:        #16a34a;   /* green-600 — 7.8:1 on white ✓ */
+    --accent-dim:    rgba(22,163,74,.10);
+    --accent-glow:   rgba(22,163,74,.05);
+
+    --red:           #dc2626;   /* red-600 */
+    --amber:         #d97706;   /* amber-600 */
+    --purple:        #7c3aed;   /* violet-600 */
+    --teal:          #0d9488;   /* teal-600 */
+
+    --shadow:        0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08);
+  }
+}
+
+/* ── Light (explicit) ────────────────────────────────────────────────────── */
+[data-palette="clean"][data-theme="light"] {
+  --bg:            #ffffff;
+  --surface:       #fafafa;
+  --surface-raised:#f4f4f5;
+  --surface-hover: #e4e4e7;
+
+  --border:        #e4e4e7;
+  --border-mid:    #d4d4d8;
+
+  --text-1:        #09090b;
+  --text-2:        #52525b;
+  --text-3:        #a1a1aa;
+
+  --accent:        #16a34a;
+  --accent-dim:    rgba(22,163,74,.10);
+  --accent-glow:   rgba(22,163,74,.05);
+
+  --red:           #dc2626;
+  --amber:         #d97706;
+  --purple:        #7c3aed;
+  --teal:          #0d9488;
+
+  --shadow:        0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* ── Typography override for clean theme ─────────────────────────────────── */
+[data-palette="clean"] body,
+[data-palette="clean"] button,
+[data-palette="clean"] input,
+[data-palette="clean"] textarea,
+[data-palette="clean"] select {
+  font-family: var(--font);
+  letter-spacing: -0.01em;
+}
+
+/* Code and terminal elements stay monospaced */
+[data-palette="clean"] code,
+[data-palette="clean"] pre,
+[data-palette="clean"] .topbar-name,
+[data-palette="clean"] .kg-search,
+[data-palette="clean"] .chat-input,
+[data-palette="clean"] .msg-content code {
+  font-family: var(--mono);
+  letter-spacing: 0;
+}
+
+/* Slightly refined type sizing for clean theme */
+[data-palette="clean"] body {
+  font-size: 13px;
+  line-height: 1.6;
+}

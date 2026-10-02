@@ -1,0 +1,54 @@
+{
+  "appId": "com.secondbrain.jade",
+  "productName": "Jade",
+  "directories": {
+    "output": "dist_electron"
+  },
+  "files": [
+    "main.js",
+    "preload.js",
+    "package.json",
+    "node_modules/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "ollama",
+      "to": "ollama",
+      "filter": [
+        "**/*",
+        "!models/**/*",
+        "!*.zip"
+      ]
+    },
+    {
+      "from": "ollama_models_dist",
+      "to": "ollama_models"
+    },
+    {
+      "from": "python_backend/dist/backend",
+      "to": "backend"
+    },
+    {
+      "from": "frontend/dist",
+      "to": "frontend/dist"
+    },
+    {
+      "from": "python_backend/models_cache",
+      "to": "models_cache"
+    }
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "dir",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "assets/Jade.ico",
+    "requestedExecutionLevel": "asInvoker"
+  },
+  "asar": true,
+  "compression": "store"
+}

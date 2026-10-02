@@ -1,0 +1,6 @@
+;!@Install@!UTF-8!
+Title="Jade"
+BeginPrompt="Install Jade — your offline second brain?"
+RunProgram="Jade.exe"
+Directory="%LOCALAPPDATA%\\Programs\\Jade"
+;!@InstallEnd@!

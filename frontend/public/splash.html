@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jade Launcher</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0b0b0f;
+      color: #e2e8f0;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      -webkit-app-region: drag; /* Frameless drag support */
+    }
+    .logo-container {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 120px;
+      height: 120px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .terminal {
+      width: 80%;
+      background: #13131a;
+      border: 1px solid #27273a;
+      border-radius: 6px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background-color: #3b82f6;
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink {
+      from, to { background-color: transparent }
+      50% { background-color: #3b82f6 }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="none">
+      <circle cx="15" cy="15" r="15" fill="#2563eb"/>
+      <path d="M15 7v16M7 15h16M11.2 11.2l7.6 7.6M18.8 11.2l-7.6 7.6" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="terminal">
+    <span id="status-text">> Initializing Jade environment...</span><span class="cursor"></span>
+  </div>
+
+  <script>
+    try {
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.on('status', (event, message) => {
+        document.getElementById('status-text').innerText = '> ' + message;
+      });
+    } catch (e) {
+      console.warn('Electron IPC not available:', e);
+    }
+  </script>
+</body>
+</html>
